@@ -3,7 +3,7 @@
     "private": true,
     "version": "0.1.0",
     "type": "module",
-    "description": "A quickstart template for building Tron DApps with Vite, React, TronWeb and TronWalletAdapter.",
+    "description": "A quickstart template for building TRON DApps with Vite, React, TronWeb and TronWalletAdapter.",
     "scripts": {
         "dev": "vite",
         "build": "tsc -b && vite build",
