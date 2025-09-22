@@ -1,0 +1,47 @@
+.changeWalletActionButton,
+.connectButton {
+    all: unset;
+    font-size: var(--tdq-font-size-small);
+    font-weight: 600;
+    line-height: 20px;
+    color: var(--tdq-color3);
+    background-color: var(--tdq-background-color-accent);
+    padding: 8px 20px;
+    border-radius: var(--tdq-border-radius-large);
+    border: 0;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--tdq-background-color-accent-hover) !important;
+        color: var(--tdq-color3) !important;
+    }
+}
+
+.loginedButton {
+    font-size: var(--tdq-font-size-small);
+    line-height: 20px;
+    color: var(--tdq-color1) !important;
+    background-color: var(--tdq-background-color1);
+    height: auto;
+    padding: 8px 10px;
+    border: 0;
+    border-radius: var(--tdq-border-radius-large);
+    cursor: pointer;
+
+    > span {
+        margin-left: 6px;
+        vertical-align: middle;
+    }
+}
+
+.tronLink-logo {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+.dropdown-item {
+    &:hover {
+        color: var(--tdq-color-accent);
+    }
+}

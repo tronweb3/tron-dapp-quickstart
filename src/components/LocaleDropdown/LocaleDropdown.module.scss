@@ -1,0 +1,22 @@
+.localeButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: var(--tdq-border-radius-large);
+    background-color: var(--tdq-background-color1);
+    font-weight: 600;
+}
+
+.localeOption {
+    font-weight: 600;
+    &:hover {
+        color: var(--tdq-color-accent) !important;
+    }
+}
+
+.localeIcon {
+    width: 24px;
+    height: 24px;
+}

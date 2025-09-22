@@ -1,0 +1,59 @@
+{
+    "name": "tron-dapp-quickstart",
+    "private": true,
+    "version": "0.1.0",
+    "type": "module",
+    "description": "A quickstart template for building Tron DApps with Vite, React, TronWeb and TronWalletAdapter.",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc -b && vite build",
+        "lint": "eslint .",
+        "preview": "vite preview"
+    },
+    "keywords": [
+        "tron",
+        "dapp",
+        "wallet",
+        "tronweb",
+        "tronwalletadapter",
+        "vite",
+        "react",
+        "blockchain"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tronweb3/tron-dapp-quickstart.git"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "@ant-design/v5-patch-for-react-19": "1.0.3",
+        "@tronweb3/tronwallet-adapter-react-hooks": "1.1.10",
+        "@tronweb3/tronwallet-adapter-react-ui": "1.1.11",
+        "@tronweb3/tronwallet-adapters": "1.2.13",
+        "antd": "5.27.0",
+        "clsx": "2.1.1",
+        "dayjs": "1.11.13",
+        "i18next": "25.3.6",
+        "react": "19.1.1",
+        "react-dom": "19.1.1",
+        "react-i18next": "15.6.1",
+        "react-router-dom": "7.8.0",
+        "tronweb": "6.0.4"
+    },
+    "devDependencies": {
+        "@eslint/js": "9.33.0",
+        "@types/react": "19.1.10",
+        "@types/react-dom": "19.1.7",
+        "@vitejs/plugin-react-swc": "4.0.0",
+        "eslint": "9.33.0",
+        "eslint-plugin-react-hooks": "5.2.0",
+        "eslint-plugin-react-refresh": "0.4.20",
+        "globals": "16.3.0",
+        "prettier": "3.6.2",
+        "sass-embedded": "1.90.0",
+        "typescript": "5.8.3",
+        "typescript-eslint": "8.39.1",
+        "vite": "7.1.2",
+        "vite-plugin-node-polyfills": "0.24.0"
+    }
+}

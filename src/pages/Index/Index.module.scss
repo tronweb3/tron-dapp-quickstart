@@ -1,0 +1,12 @@
+.container {
+    box-sizing: border-box;
+    max-width: 100%;
+    min-height: calc(100vh - 72px);
+    padding-bottom: 60px;
+    background: url(../../assets/bg-light.png) no-repeat center bottom / auto 773px;
+    overflow: hidden;
+}
+
+:root[data-theme='dark'] .container {
+    background-image: url(../../assets/bg-dark.png);
+}

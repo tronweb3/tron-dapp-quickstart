@@ -1,0 +1,43 @@
+.transferContainer {
+    margin-top: var(--tdq-margin-xsmall);
+    background-color: var(--tdq-background-color1);
+    padding: var(--tdq-padding-small);
+    border-radius: var(--tdq-border-radius-large);
+    box-shadow: 0 4px 100px -30px rgba(255, 96, 0, 0.15);
+}
+
+.input {
+    margin-bottom: var(--tdq-margin-small);
+}
+
+.inputNumber {
+    vertical-align: middle;
+}
+
+.amountDescription {
+    margin-left: var(--tdq-margin-xxsmall);
+    vertical-align: middle;
+}
+
+.submit {
+    all: unset;
+    display: block;
+    width: 100%;
+    background-color: var(--tdq-background-color-accent);
+    border-radius: var(--tdq-border-radius-small);
+    padding: 15px 0;
+    text-align: center;
+    font-size: var(--tdq-font-size-large);
+    font-weight: 700;
+    color: var(--tdq-color-button);
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--tdq-background-color-accent-hover);
+    }
+
+    &[disabled] {
+        background-color: var(--tdq-background-color6);
+        cursor: not-allowed;
+    }
+}

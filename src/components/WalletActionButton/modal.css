@@ -1,0 +1,139 @@
+/* modal */
+.adapter-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    inset: 0; /* inset sets all 4 values (top right bottom left) much like how we set padding, margin etc., */
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+    overflow: hidden;
+    z-index: 999;
+    padding: 40px 20px 20px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.adapter-modal-fade-in {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+}
+
+.adapter-modal-wrapper {
+    width: 100%;
+    max-width: 420px;
+    background-color: var(--tdq-background-color11);
+    border-radius: 10px;
+    color: var(--tdq-color1);
+    display: flex;
+    flex-direction: column;
+    font-size: 2rem;
+    font-family: 'Outfit';
+}
+.adapter-modal-wrapper .adapter-list {
+    padding-bottom: 48px;
+}
+.adapter-modal-header {
+    position: relative;
+    padding: 64px 48px 48px;
+}
+.adapter-modal-header .adapter-modal-title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 34px;
+    text-align: center;
+}
+@media (max-width: 374px) {
+    .adapter-modal-header .adapter-modal-title {
+        font-size: 18px;
+    }
+}
+.adapter-modal-header .close-button {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    cursor: pointer;
+    background: var(--tdq-background-color10);
+    border: none;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    display: flex;
+    top: 18px;
+    right: 18px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.adapter-modal-header .close-button:focus {
+    outline: none;
+}
+.adapter-modal-header .close-button:focus-visible {
+    outline: 2px solid white;
+}
+.adapter-modal-header .close-button::before,
+.adapter-modal-header .close-button::after {
+    content: '';
+    display: block;
+    width: 19px;
+    height: 2px;
+    background-color: var(--tdq-background-color9);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.adapter-modal-header .close-button::before {
+    transform: rotate(45deg);
+}
+.adapter-modal-header .close-button::after {
+    transform: rotate(-45deg);
+}
+
+/** WalletItem */
+.adapter-wallet-item {
+    margin: 0 var(--tdq-margin-small);
+}
+.adapter-wallet-item .adapter-react-button {
+    all: unset;
+    width: 100%;
+    background-color: transparent;
+    border-radius: var(--tdq-border-radius-small);
+    display: flex;
+    align-items: center;
+    padding: var(--tdq-padding-xsmall);
+    box-sizing: border-box;
+    font-family: 'Outfit';
+    font-size: var(--tdq-font-size-large);
+    font-weight: 600;
+    cursor: pointer;
+}
+.adapter-wallet-item .adapter-react-button:hover {
+    background-color: var(--tdq-background-color10);
+}
+.adapter-wallet-item .adapter-react-button .button-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: var(--tdq-margin-small);
+}
+.adapter-wallet-item .adapter-react-button .button-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.adapter-wallet-item .status-text {
+    opacity: 0.6;
+    margin-left: auto;
+    font-size: 14px;
+    font-weight: 400;
+}

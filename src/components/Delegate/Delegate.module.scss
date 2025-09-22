@@ -1,0 +1,197 @@
+.delegate {
+    margin-top: var(--tdq-margin-small);
+}
+
+.delegate-content {
+    flex: 1;
+}
+
+.delegate-aside {
+    width: 320px;
+}
+
+.accountInfo {
+    border-radius: var(--tdq-border-radius-large);
+    background-color: var(--tdq-background-color7);
+    color: var(--tdq-color3);
+
+    & :global(.ant-collapse-content-box) {
+        padding: 0 var(--tdq-padding-xsmall) var(--tdq-padding-xsmall) !important;
+    }
+
+    & :global(.ant-collapse-header) {
+        padding: var(--tdq-padding-xsmall) !important;
+    }
+
+    & :global(.ant-collapse-expand-icon) {
+        height: 24px !important;
+    }
+}
+
+.accountInfo-title {
+    font-size: var(--tdq-font-size-large);
+    font-weight: 700;
+
+    color: var(--tdq-color3);
+}
+
+.accountInfo-noAddress {
+    background-color: #00000033;
+    border-radius: var(--tdq-border-radius-small);
+    text-align: center;
+    color: var(--tdq-color2);
+}
+
+.accountInfo-spin {
+    display: block;
+    margin: 0 auto;
+}
+
+.expandIcon {
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+
+.refreshIcon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.accountInfo-balance-title {
+    font-size: var(--tdq-font-size-small);
+    color: var(--tdq-color2);
+    font-weight: 600;
+}
+
+.accountInfo-balance-value {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--tdq-color3);
+}
+
+.accountInfo-balance-unit {
+    font-size: var(--tdq-font-size-small);
+    margin-left: var(--tdq-margin-xxsmall);
+}
+
+.accountInfo-resources {
+    border-radius: var(--tdq-border-radius-small);
+    background-color: var(--tdq-background-color8);
+    padding: var(--tdq-padding-xsmall);
+    color: var(--tdq-color3);
+}
+
+.accountInfo-resource-total {
+    color: var(--tdq-color2);
+}
+
+.delegateOperation {
+    margin-top: var(--tdq-margin-xsmall);
+    background-color: var(--tdq-background-color1);
+    border-radius: var(--tdq-border-radius-large);
+
+    & :global(.ant-collapse-content-box) {
+        padding: 0 var(--tdq-padding-xsmall) var(--tdq-padding-xsmall) !important;
+    }
+
+    & :global(.ant-collapse-header) {
+        padding: var(--tdq-padding-xsmall) !important;
+    }
+}
+
+.delegateOperation-last {
+    margin-bottom: 50px;
+}
+
+.delegateOperation-title {
+    color: var(--tdq-color1);
+    font-weight: 700;
+    font-size: var(--tdq-font-size-large);
+}
+
+.freezeOperation-formItem {
+    margin-top: var(--tdq-margin-xsmall);
+}
+
+.freezeOperation-submitButton {
+    all: unset;
+    display: block;
+    width: 100%;
+    background-color: var(--tdq-background-color-accent);
+    margin-top: var(--tdq-margin-xsmall);
+    border-radius: var(--tdq-border-radius-small);
+    padding: 15px 0;
+    text-align: center;
+    font-size: var(--tdq-font-size-large);
+    font-weight: 700;
+    color: var(--tdq-color-button);
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--tdq-background-color-accent-hover);
+    }
+
+    &[disabled] {
+        background-color: var(--tdq-background-color6);
+        cursor: not-allowed;
+    }
+}
+
+.delegateContent {
+    padding: var(--tdq-padding-xsmall);
+    background-color: var(--tdq-background-color1);
+    border-radius: var(--tdq-border-radius-large);
+    box-shadow: 0 4px 100px -30px rgba(255, 96, 0, 0.15);
+    margin-bottom: 50px;
+}
+
+.delegateContent-table {
+    & :global(.ant-table) {
+        background-color: transparent;
+    }
+
+    & :global(.ant-table-cell) {
+        border-bottom: 0 !important;
+    }
+
+    & :global(.ant-table-thead) {
+        border-radius: var(--tdq-border-radius-small);
+        overflow: hidden;
+
+        tr {
+            & :global(th) {
+                background-color: var(--tdq-background-color-bg) !important;
+                color: var(--tdq-color4) !important;
+
+                &:first-child {
+                    border-top-left-radius: var(--tdq-border-radius-small) !important;
+                    border-bottom-left-radius: var(--tdq-border-radius-small) !important;
+                }
+
+                &:last-child {
+                    border-top-right-radius: var(--tdq-border-radius-small) !important;
+                    border-bottom-right-radius: var(--tdq-border-radius-small) !important;
+                }
+
+                &::before {
+                    display: none !important;
+                }
+            }
+        }
+    }
+
+    & :global(.ant-table-placeholder) {
+        background-color: transparent !important;
+
+        &:hover :global(.ant-table-cell) {
+            background-color: transparent !important;
+        }
+    }
+}
+
+.delegateContent-tableRow {
+    border: 0 !important;
+}
