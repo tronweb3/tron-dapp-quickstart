@@ -5,6 +5,7 @@ import ThemeSwitch from '../ThemeSwitch/ThemeSwitch';
 import LocaleDropdown from '../LocaleDropdown/LocaleDropdown';
 import WalletActionButton from '../WalletActionButton/WalletActionButton';
 import { useLocale } from '../../hooks/useLocale';
+import { config } from '../../config/env';
 import Logo from '../../assets/Transfer.png';
 import styles from './Header.module.scss';
 
@@ -44,7 +45,7 @@ const HeaderNav: FC = () => {
 };
 
 export default function Header() {
-    const currentChain = import.meta.env.TDQ_CURRENT_CHAIN;
+    const currentChain = config.chainName;
     return (
         <header className={styles.header}>
             <div className={styles.headerLeft}>
