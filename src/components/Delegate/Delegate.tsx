@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import Input from '../FormItem/Input';
 import Select from '../FormItem/Select';
 import { useLocale } from '../../hooks/useLocale';
+import { useSendTransaction } from '../../hooks/useSendTransaction';
 import { DarkThemeContext } from '../../hooks/useDarkTheme';
 import { tronWeb } from '../../utils/tronWeb';
 import ExpandIcon from '../../assets/expand-icon.png';
@@ -19,7 +20,7 @@ import styles from './Delegate.module.scss';
 import type { AnyObject } from 'antd/es/_util/type';
 import type { Types } from 'tronweb';
 import type { CollapseProps } from 'antd';
-import type { FC, SyntheticEvent, TransitionStartFunction } from 'react';
+import type { FC, SyntheticEvent } from 'react';
 
 const AccountInfo: FC = () => {
     const { address } = useWallet();
@@ -146,47 +147,6 @@ const AccountInfo: FC = () => {
     );
 };
 
-function useOnFinishCallback<Values>({
-    startTransition,
-    createTx,
-}: {
-    startTransition: TransitionStartFunction;
-    createTx: (values: Values) => Promise<Types.Transaction>;
-}) {
-    const { t } = useLocale();
-    const { address, signTransaction } = useWallet();
-    const { message, notification } = App.useApp();
-
-    return (values: Values) => {
-        if (!address) {
-            message.error(t('sentence_pcywf'));
-            return;
-        }
-        startTransition(async () => {
-            try {
-                const tx = await createTx(values);
-                const signedTx = await signTransaction(tx);
-                const receipt = await tronWeb.trx.sendRawTransaction(signedTx);
-                if (receipt.result) {
-                    notification.success({
-                        message: t('sentence_ts'),
-                    });
-                } else {
-                    notification.error({
-                        message: t('sentence_tf'),
-                        description: tronWeb.toUtf8(receipt.message),
-                    });
-                }
-            } catch (error) {
-                notification.error({
-                    message: t('sentence_tf'),
-                    description: error instanceof Error ? error.message : String(error),
-                });
-            }
-        });
-    };
-}
-
 const FreezeOperation: FC = () => {
     type Values = {
         amount: number;
@@ -194,7 +154,7 @@ const FreezeOperation: FC = () => {
     };
     const { t } = useLocale();
     const { address } = useWallet();
-    const [isSubmiting, startTransition] = useTransition();
+    const { send, isPending } = useSendTransaction();
     const amount = useRef<Values['amount']>(0);
     const type = useRef<Values['type']>('BANDWIDTH');
     const onChangeAmount = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -205,18 +165,12 @@ const FreezeOperation: FC = () => {
     const onChangeType = useCallback((value: Values['type']) => {
         type.current = value;
     }, []);
-    const onFinish = useOnFinishCallback({
-        startTransition,
-        createTx: ({ amount, type }: Values) => {
-            return tronWeb.transactionBuilder.freezeBalanceV2(amount, type, address!);
-        },
-    });
     const onClickSubmit = useCallback(
         (e: SyntheticEvent) => {
             e.stopPropagation();
-            onFinish({ amount: amount.current, type: type.current });
+            send(() => tronWeb.transactionBuilder.freezeBalanceV2(amount.current, type.current, address!));
         },
-        [onFinish]
+        [send, address]
     );
     return (
         <>
@@ -248,7 +202,7 @@ const FreezeOperation: FC = () => {
                 onChange={onChangeType}
                 size="small"
             ></Select>
-            <button className={styles['freezeOperation-submitButton']} disabled={isSubmiting} onClick={onClickSubmit}>
+            <button className={styles['freezeOperation-submitButton']} disabled={isPending} onClick={onClickSubmit}>
                 {t('Freeze')}
             </button>
         </>
@@ -264,7 +218,7 @@ const DelegateOperation: FC = () => {
     };
     const { t } = useLocale();
     const { address } = useWallet();
-    const [isSubmiting, startTransition] = useTransition();
+    const { send, isPending } = useSendTransaction();
     const receiver = useRef<Values['receiver']>('');
     const type = useRef<Values['type']>('BANDWIDTH');
     const amount = useRef<Values['amount']>(0);
@@ -285,30 +239,22 @@ const DelegateOperation: FC = () => {
         if (isNaN(value)) return;
         lockPeriod.current = value;
     }, []);
-    const onFinish = useOnFinishCallback({
-        startTransition,
-        createTx: ({ amount, type, receiver, lockPeriod }: Values) => {
-            return tronWeb.transactionBuilder.delegateResource(
-                amount,
-                receiver,
-                type,
-                address!,
-                lockPeriod > 0,
-                lockPeriod
-            );
-        },
-    });
     const onClickSubmit = useCallback(
         (e: SyntheticEvent) => {
             e.stopPropagation();
-            onFinish({
-                receiver: receiver.current,
-                type: type.current,
-                amount: amount.current,
-                lockPeriod: lockPeriod.current,
-            });
+            const lock = lockPeriod.current;
+            send(() =>
+                tronWeb.transactionBuilder.delegateResource(
+                    amount.current,
+                    receiver.current,
+                    type.current,
+                    address!,
+                    lock > 0,
+                    lock
+                )
+            );
         },
-        [onFinish]
+        [send, address]
     );
 
     return (
@@ -357,7 +303,7 @@ const DelegateOperation: FC = () => {
                 onChange={onChangeLockPeriod}
                 size="small"
             ></Input>
-            <button className={styles['freezeOperation-submitButton']} disabled={isSubmiting} onClick={onClickSubmit}>
+            <button className={styles['freezeOperation-submitButton']} disabled={isPending} onClick={onClickSubmit}>
                 {t('Delegate')}
             </button>
         </>

@@ -80,3 +80,9 @@ export async function buildContractCall(
     }
     return res.transaction;
 }
+
+/** Read a TRC20 token's `decimals()`. */
+export async function getTRC20ContractDecimals(address: string, from: string): Promise<number> {
+    const decimals = await readContract<number | bigint>(address, TRC20_ABI, 'decimals', [], { from });
+    return Number(decimals);
+}

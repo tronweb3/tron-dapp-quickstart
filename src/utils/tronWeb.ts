@@ -15,28 +15,7 @@ export const tronWeb = new TronWeb({
     headers: config.apiKey ? { 'TRON-PRO-API-KEY': config.apiKey } : undefined,
 });
 
-export const getTRC20ContractDecimals = async (contractAddress: string, from: string) => {
-    // TRC20 contract should implement decimals function.
-    const abi = [
-        {
-            constant: true,
-            inputs: [],
-            name: 'decimals',
-            outputs: [
-                {
-                    name: '',
-                    type: 'uint8',
-                },
-            ],
-            payable: false,
-            stateMutability: 'view',
-            type: 'function',
-        },
-    ] as const;
-    const contract = tronWeb.contract(abi, contractAddress);
-    return contract.decimals().call({ from });
-};
-
+/** Read a TRC10 token's precision via `trx.getTokenByID`. */
 export const getTokenPrecision = async (tokenId: string) => {
     const token = await tronWeb.trx.getTokenByID(tokenId);
     return token.precision;
