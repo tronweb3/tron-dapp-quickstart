@@ -22,6 +22,8 @@ export default {
     sentence_peavaaa: '請輸入有效地址和金額',
     sentence_tf: '交易失敗！',
     sentence_ts: '交易成功！',
+    sentence_tp: '交易已提交，等待確認。',
+    label_vot: '在 Tronscan 查看',
     Delegate: '委託',
     inputLabel_type: '類型',
     inputLabel_ut: '解鎖時間',

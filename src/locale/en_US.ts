@@ -21,6 +21,8 @@ export default {
     sentence_peavaaa: 'Please enter a valid address and amount.',
     sentence_tf: 'Transaction failed!',
     sentence_ts: 'Transaction successful!',
+    sentence_tp: 'Transaction submitted, pending confirmation.',
+    label_vot: 'View on Tronscan',
     inputLabel_type: 'Type',
     inputLabel_ut: 'Unlock time',
     inputLabel_fa2: 'Freeze Amount',
